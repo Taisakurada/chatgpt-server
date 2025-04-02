@@ -25,12 +25,9 @@ const openai = new OpenAI({
 // チャットエンドポイント
 app.post('/chat', async (req, res) => {
   try {
-    const userMessage = req.body.message;
+    // ここを追加！
+const { messages } = req.body;
 
-    const chatCompletion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: userMessage }],
-    });
 
     const reply = chatCompletion.choices[0].message.content;
     res.json({ reply });
