@@ -5,7 +5,10 @@ const cors = require('cors');
 const { OpenAI } = require('openai');
 
 const app = express();
-const port = process.env.PORT || 3000; // Render用にPORTを動的に
+const port = process.env.PORT || 3000; // ← Render 用ポート
+app.listen(port, () => {
+  console.log(`🚀 サーバー起動中 : http://localhost:${port}`);
+});
 
 app.use(cors());
 app.use(express.json());
