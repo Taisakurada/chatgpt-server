@@ -24,7 +24,6 @@ async function sendMessage() {
       },
       body: JSON.stringify({ message: userInput })
     });
-    {
       role: "system",
       content: `
     あなたは「設備工学博士」として、空調、配管、電気、冷媒、高圧ガス分野における高度な専門知識を有しています。
