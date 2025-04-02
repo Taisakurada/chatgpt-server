@@ -35,3 +35,17 @@ async function sendMessage() {
   document.getElementById("user-input").value = "";
   chatBox.scrollTop = chatBox.scrollHeight;
 }
+// チャット履歴を保存・表示
+function saveChatHistory() {
+  localStorage.setItem("chatHistory", document.getElementById("chat-box").innerHTML);
+}
+
+function loadChatHistory() {
+  const saved = localStorage.getItem("chatHistory");
+  if (saved) {
+    document.getElementById("chat-box").innerHTML = saved;
+  }
+}
+window.onload = () => {
+  loadChatHistory();
+};
