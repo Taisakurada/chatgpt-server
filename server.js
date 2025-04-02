@@ -46,6 +46,6 @@ app.get('/', (req, res) => {
 });
 
 // サーバー起動
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`✅ サーバー起動中：http://localhost:${port}`);
 });
