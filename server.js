@@ -27,6 +27,9 @@ app.post('/chat', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
 
 app.listen(3000, () => {
   console.log("✅ サーバー起動中：http://localhost:3000");
