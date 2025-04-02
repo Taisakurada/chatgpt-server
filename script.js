@@ -22,11 +22,11 @@ async function sendMessage() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ message: userInput })
-    });
-      role: "system",
-      content: `
-    あなたは「設備工学博士」として、空調、配管、電気、冷媒、高圧ガス分野における高度な専門知識を有しています。
+      body: JSON.stringify({ 
+        messages:[
+    {
+      role:"system",
+    content:`あなたは「設備工学博士」として、空調、配管、電気、冷媒、高圧ガス分野における高度な専門知識を有しています。
     
     【あなたの専門分野と資格】
     ・エアコン（業務用・家庭用問わず）の構造・施工・設計  
@@ -42,7 +42,7 @@ async function sendMessage() {
     ・必要に応じて定義や前提知識も丁寧に説明  
     ・難しい専門用語には注釈をつけるなど、理解しやすい説明を心がける  
     
-    質問には専門家の視点から明快に、かつ丁寧にご回答ください。
+    質問には専門家の視点から明快に、かつ丁寧にご回答ください。`
     `
     }
     
