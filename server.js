@@ -1,20 +1,16 @@
-require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const { OpenAI } = require('openai');
+require("dotenv").config();
+const express = require("express");
+const path = require("path");
+const cors = require("cors");
+const { OpenAI } = require("openai");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🌐 サーバー起動中：http://localhost:${PORT}`);
-});
-
 
 app.use(cors());
 app.use(express.json());
 
-// 静的ファイル（HTMLやCSSなど）を公開
+// 静的ファイルを公開
 app.use(express.static(path.join(__dirname)));
 
 // OpenAI 初期化
@@ -23,26 +19,34 @@ const openai = new OpenAI({
 });
 
 // チャットエンドポイント
-app.post('/chat', async (req, res) => {
+app.post("/chat", async (req, res) => {
   try {
-    // ここを追加！
-const { messages } = req.body;
+    const { messages } = req.body;
 
+    // 🔄 正しい位置で定義と同時にログ出力
+    const chatCompletion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: messages,
+    });
+    
+    console.log("📦 chatCompletion:", chatCompletion); // ← この位置ならOK
+    
 
-    const reply = chatCompletion.choices[0].message.content;
+    const reply = chatCompletion.choices?.[0]?.message?.content || "⚠️ 返信の取得に失敗しました";
     res.json({ reply });
+
   } catch (err) {
-    console.error('❌ エラー:', err.message);
+    console.error("❌ サーバーエラー:", err);
     res.status(500).json({ error: err.message });
   }
 });
 
-// `/` にアクセスしたときに `index.html` を返す
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+// HTMLを返す
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // サーバー起動
 app.listen(PORT, () => {
-  console.log(`✅ サーバー起動中：http://localhost:${PORT}`);
+  console.log(`✅ サーバー起動中: http://localhost:${PORT}`);
 });
