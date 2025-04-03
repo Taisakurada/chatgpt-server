@@ -1,65 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Rock+Salt&display=swap');
+
 body {
-  font-family: 'Arial', sans-serif;
   margin: 0;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  color: #333;
+  padding: 0;
+  background-image: 
+    url('https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg'),
+    url('https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg');
+  background-size: 50% 100%, 50% 100%;
+  background-position: left top, right top;
+  background-repeat: no-repeat, no-repeat;
+  background-color: #121212;
+  color: #f0f0f0;
+  font-family: 'Anton', sans-serif;
+}
+
+
+
+header {
+  background-color: #ff6600;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #fff;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.chat-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ff6600;
+  height: 500px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 #chat-box {
-  width: 100%;
-  max-width: 800px;
-  height: 60vh;
-  overflow-y: auto;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  margin: 0 auto 1rem auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#chat-box div {
+  max-width: 70%;
+  padding: 12px 16px;
+  margin: 8px;
+  border-radius: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  position: relative;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+#chat-box div:nth-child(odd) {
+  background-color: #ff6600;
+  align-self: flex-end;
+  color: white;
+  border-bottom-right-radius: 0;
+}
+
+#chat-box div:nth-child(even) {
+  background-color: #333;
+  align-self: flex-start;
+  color: white;
+  border-bottom-left-radius: 0;
+}
+
+.input-area {
+  display: flex;
+  margin-top: 10px;
 }
 
 input[type="text"] {
-  width: calc(100% - 100px);
-  padding: 0.7rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px 0 0 8px;
+  border: none;
+  background-color: #222;
+  color: #fff;
 }
 
 button {
-  padding: 0.7rem 1rem;
-  font-size: 1rem;
-  margin-left: 0.5rem;
-  border-radius: 5px;
-  background-color: #007bff;
+  padding: 12px 20px;
+  background-color: #ff6600;
   color: white;
+  font-weight: bold;
   border: none;
+  border-radius: 0 8px 8px 0;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #e65c00;
 }
 
-@media (max-width: 600px) {
-  body {
-    padding: 0.5rem;
+/* レスポンシブ */
+@media screen and (max-width: 600px) {
+  .chat-container {
+    height: 80vh;
+    padding: 10px;
   }
 
-  #chat-box {
-    height: 50vh;
-    padding: 0.5rem;
+  header h1 {
+    font-size: 20px;
   }
 
   input[type="text"] {
-    width: 100%;
-    margin-bottom: 0.5rem;
+    font-size: 14px;
   }
 
   button {
-    width: 100%;
-    margin-left: 0;
+    font-size: 14px;
   }
 }
