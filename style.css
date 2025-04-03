@@ -26,9 +26,11 @@ header {
 header h1 {
   margin: 0;
   font-size: 28px;
-  color: #fff;
+  color: #000; /* ← ここを白から黒へ変更 */
   letter-spacing: 2px;
-  text-shadow: 1px 1px 2px #000;
+  text-shadow: none; /* ← シャドウも消してスッキリさせます（お好みで） */
+}
+
 }
 
 .chat-container {
